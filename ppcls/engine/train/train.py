@@ -50,7 +50,13 @@ def train_epoch(engine, epoch_id, print_batch_step):
         # image input
         with engine.auto_cast(is_eval=False):
             out = forward(engine, batch)
+
+            # 人体朝向
+            batch[1] = batch[1][:,:,23:]
+            out = out[:,23:]
             loss_dict = engine.train_loss_func(out, batch[1])
+
+
 
         # loss
         loss = loss_dict["loss"] / engine.update_freq

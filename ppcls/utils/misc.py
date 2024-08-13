@@ -71,6 +71,7 @@ class AverageMeter(object):
             self=self)
 
 
+# 评价指标
 class AttrMeter(object):
     """
     Computes and stores the average and current value
@@ -116,7 +117,7 @@ class AttrMeter(object):
             self.gt_neg + eps)  # true negative
         # mean accuracy
         label_ma = (label_pos_recall + label_neg_recall) / 2
-
+        # 召回率
         label_pos_recall = np.mean(label_pos_recall)
         label_neg_recall = np.mean(label_neg_recall)
         label_prec = (self.true_pos / (self.true_pos + self.false_pos + eps))

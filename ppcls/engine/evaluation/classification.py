@@ -103,6 +103,9 @@ def classification_eval(engine, epoch_id=0):
         else:
             labels = batch[1]
             preds = out
+            # 人体朝向
+            labels = labels[:,:,23:]
+            preds = preds[:,23:]
 
         # calc loss
         if engine.eval_loss_func is not None:
